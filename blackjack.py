@@ -13,12 +13,15 @@ logo = r"""
 
 
 def clear():
+    '''clear the screen'''
     os.system('cls' if os.name == 'nt' else 'clear')
+    
 def deal_cards():
     """Returns a random card from the deck"""
     cards = [11,2,3,4,5,6,7,8,9,10,10,10,10,10]
     card = random.choice(cards)
     return card
+
 
 def calculate_score(cards):
     """Take a list of cards and return the score calculated from the cards"""
@@ -30,8 +33,10 @@ def calculate_score(cards):
         cards.append(1)
     return sum(cards)
 
+
 #compare user's and dealers cards
 def compare(user_score, computer_score):
+    '''compare user and computer scores'''
     if user_score == computer_score:
         return "It's a draw 😊"
     elif computer_score == 0:
@@ -45,7 +50,9 @@ def compare(user_score, computer_score):
     else:
         return "You lose 😫"
 
+
 def play_game():
+    '''play the game'''
     print(logo)
     user_cards = []
     computer_cards = []
@@ -71,7 +78,7 @@ def play_game():
                 is_game_over = True
                 
     #computer move
-    """computer can draw cards as long as sum < 17 or but not when it has a black jack"""
+    #computer can draw cards as long as sum < 17 or but not when it has a black jack
     while computer_score != 0 and computer_score < 17:
         computer_cards.append(deal_cards())
         computer_score = calculate_score(computer_cards)
